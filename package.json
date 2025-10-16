@@ -1,14 +1,13 @@
 {
   "name": "psy-app-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "A server for an psy-app",
   "main": "/src/server.ts",
   "type": "module",
   "scripts": {
     "dev": "tsx --watch src/server.ts"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Dev-Nadson",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
