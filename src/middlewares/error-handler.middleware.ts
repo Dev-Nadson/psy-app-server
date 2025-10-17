@@ -2,7 +2,7 @@ import type { FastifyRequest, FastifyReply } from "fastify";
 import { ZodError } from "zod";
 import z from "zod";
 
-async function error_handler_middleware(req: FastifyRequest, reply: FastifyReply, error: unknown) {
+async function error_handler_middleware(error: unknown, req: FastifyRequest, reply: FastifyReply) {
     if (error instanceof ZodError) {
         return reply.status(400).send({
             error: "Dados Inválidos",
