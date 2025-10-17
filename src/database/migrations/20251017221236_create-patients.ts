@@ -1,7 +1,7 @@
 import type { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
-    knex.schema.createTable("patients", (table) => {
+    await knex.schema.createTable("patients", (table) => {
         table.string("id").primary().notNullable()
         table.string("psychologist_id").references("id").inTable("users").notNullable()
         table.string("name").notNullable()
