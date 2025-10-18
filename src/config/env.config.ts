@@ -1,9 +1,13 @@
 import "dotenv/config"
+import z from "zod"
 
-const env = {
-    PORT: Number(process.env.PORT),
-    HOST: String(process.env.HOST),
-    DATABASE_URL: String(process.env.DATABASE_URL)
-}
+const env_schema = z.object({
+    PORT: z.coerce.number().positive().default(3333),
+    HOST: z.string().min(1).default('0.0.0.0'),
+    DATABASE_URL: z.url().min(1),
+    BCRYPT_ROUNDS: z.coerce.number().min(10).max(15).default(10)
+})
+
+const env = env_schema.parse(process.env)
 
 export { env }
