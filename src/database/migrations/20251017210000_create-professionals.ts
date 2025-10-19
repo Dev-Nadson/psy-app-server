@@ -8,6 +8,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string("password").notNullable()
         table.timestamp("created_at").defaultTo(knex.fn.now()).notNullable()
         table.timestamp("updated_at").defaultTo(knex.fn.now()).notNullable()
+        table.timestamp("deleted_at").defaultTo(null)
     })
 }
 
