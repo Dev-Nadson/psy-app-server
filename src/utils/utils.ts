@@ -1,7 +1,5 @@
-import { createId } from "@paralleldrive/cuid2";
+import { createId } from "@paralleldrive/cuid2/index.js";
 
-function create_id(): string {
+export function create_id(): string {
     return createId()
 }
-
-export { create_id }
