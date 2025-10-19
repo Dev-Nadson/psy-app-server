@@ -1,4 +1,4 @@
-interface IcreateProfessionalInput {
+interface ICreateProfessionalInput {
     name: string
     email: string
     password: string
@@ -11,4 +11,4 @@ interface ICreateProfessionalOutput {
     created_at: Date;
 }
 
-export type { IcreateProfessionalInput, ICreateProfessionalOutput }
+export type { ICreateProfessionalInput, ICreateProfessionalOutput }

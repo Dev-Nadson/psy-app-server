@@ -2,9 +2,9 @@ import { Knex } from "../../database/config.js";
 import { create_id } from "../../utils/utils.js";
 import { hash_text } from "../../utils/encryptation.js";
 import { ConflictError, InternalServerError } from "../../utils/errors/app-errors.js";
-import type { IcreateProfessionalInput, ICreateProfessionalOutput } from "../../schemas/types/professionals.types.js";
+import type { ICreateProfessionalInput, ICreateProfessionalOutput } from "../../schemas/types/professionals.types.js";
 
-async function create_professional_repositorie({ name, email, password }: IcreateProfessionalInput): Promise<ICreateProfessionalOutput> {
+async function create_professional_repository({ name, email, password }: ICreateProfessionalInput): Promise<ICreateProfessionalOutput> {
 
     const exist_professional = await Knex("professionals").select("id").where({ email }).first()
 
@@ -37,4 +37,4 @@ async function create_professional_repositorie({ name, email, password }: Icreat
     return created_professional
 }
 
-export { create_professional_repositorie }
+export { create_professional_repository }
