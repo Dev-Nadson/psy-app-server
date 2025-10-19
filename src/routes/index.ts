@@ -5,9 +5,9 @@ import { patients_routes } from "./patients.routes.js";
 
 
 async function app_routes(app: FastifyInstance) {
-    app.register(professionals_routes, { prefix: "professionals/" })
-    app.register(patients_routes, { prefix: "patients/" })
-    app.register(anamnesis_routes, { prefix: "anamnesis/" })
+    app.register(professionals_routes, { prefix: "/professionals" })
+    app.register(patients_routes, { prefix: "/patients" })
+    app.register(anamnesis_routes, { prefix: "/anamnesis" })
 }
 
 export { app_routes }
