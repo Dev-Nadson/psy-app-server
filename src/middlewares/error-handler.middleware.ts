@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
+import { AppError } from "../utils/errors/app-errors.js";
 import { ZodError } from "zod";
 import z from "zod";
 
@@ -7,6 +8,13 @@ async function error_handler_middleware(error: unknown, req: FastifyRequest, rep
         return reply.status(400).send({
             error: "Dados Inválidos",
             issues: z.treeifyError(error)
+        })
+    }
+
+    if (error instanceof AppError) {
+        return reply.status(error.status_code).send({
+            error: error.name,
+            issues: error.message
         })
     }
 
