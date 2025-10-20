@@ -1,5 +1,4 @@
 import type { FastifyInstance } from "fastify";
-import { protected_route_middleware } from "../middlewares/protected_route.middleware.js";
 import { professionals_routes } from "./professionals.routes.js";
 import { anamnesis_routes } from "./anamnesis.routes.js";
 import { patients_routes } from "./patients.routes.js";
