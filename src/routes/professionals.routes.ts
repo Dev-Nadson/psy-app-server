@@ -12,7 +12,7 @@ async function professionals_routes(app: FastifyInstance) {
     app.get("/:id", get_professionals_controller)
     app.post("/create", create_professionals_controller)
     app.put("/update", update_professionals_controller)
-    app.delete("/delete", delete_professionals_controller)
+    app.patch("/delete", delete_professionals_controller)
 }
 
 export { professionals_routes }

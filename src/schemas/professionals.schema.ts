@@ -6,4 +6,8 @@ const professional_schema = z.object({
     password: z.string().min(8).max(32).trim()
 })
 
-export { professional_schema }
+const professional_params_schema = z.object({
+    id: z.cuid2()
+})
+
+export { professional_schema, professional_params_schema }

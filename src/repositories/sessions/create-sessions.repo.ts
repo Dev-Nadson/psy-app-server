@@ -1,6 +1,6 @@
 import { Knex } from "../../database/config.js";
-import { UnauthorizedError } from "../../utils/errors/app-errors.js";
 import { compare_text } from "../../utils/encryptation.js";
+import { UnauthorizedError, NotFoundError } from "../../utils/errors/app-errors.js";
 import type { ISessionInput, IsessionOutput } from "../../schemas/types/sessions.types.js";
 
 async function create_session_repository({ email, password }: ISessionInput): Promise<IsessionOutput> {
@@ -8,6 +8,10 @@ async function create_session_repository({ email, password }: ISessionInput): Pr
 
     if (!user) {
         throw new UnauthorizedError("Email ou Senha Inválidos")
+    }
+
+    if (user.deleted_at) {
+        throw new NotFoundError("Credenciais não encontradas")
     }
 
     const password_match = await compare_text(password, user.password)
