@@ -4,7 +4,7 @@ import { UnauthorizedError } from "../utils/errors/app-errors.js";
 
 declare module 'fastify' {
     interface FastifyRequest {
-        user: IProfile
+        prof: IProfile
     }
 }
 
@@ -13,7 +13,7 @@ async function protected_route_middleware(req: FastifyRequest, reply: FastifyRep
         const authHeader = req.headers.authorization
 
         if (!authHeader) {
-            throw new UnauthorizedError("Token de autenticação não fornecido");
+            throw new UnauthorizedError("Token de autenticação não fornecido")
         }
 
         const parts = authHeader.split(" ");
@@ -22,17 +22,23 @@ async function protected_route_middleware(req: FastifyRequest, reply: FastifyRep
         }
 
         const token = parts[1]
+        if (!token) {
+            throw new UnauthorizedError("Token de autenticação não fornecido")
+        }
 
         const decoded = await req.server.jwt.verify<IProfile>(token)
 
-        req.user = {
+        req.prof = {
             sub: decoded.sub,
             email: decoded.email,
             name: decoded.name
         };
 
     } catch (error) {
-
+        if (error instanceof UnauthorizedError) {
+            throw error
+        }
+        throw new UnauthorizedError("Token inválido ou expirado")
     }
 
 }
