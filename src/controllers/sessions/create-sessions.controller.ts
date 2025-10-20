@@ -8,7 +8,7 @@ async function create_sessions_controller(req: FastifyRequest, reply: FastifyRep
 
     const user = await create_session_repository({ email, password })
     const token = req.server.jwt.sign({
-        sub: user.id,
+        sub: user.sub,
         email: user.email,
         name: user.name
     });

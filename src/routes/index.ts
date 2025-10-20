@@ -7,10 +7,10 @@ import { session_routes } from "./sessions.routes.js";
 
 
 async function app_routes(app: FastifyInstance) {
+    app.register(session_routes)
     app.register(professionals_routes, { prefix: "/professionals" })
-    app.register(patients_routes, { onRequest: [protected_route_middleware], prefix: "/patients" })
-    app.register(anamnesis_routes, { onRequest: [protected_route_middleware], prefix: "/anamnesis" })
-    app.register(session_routes, { onRequest: [protected_route_middleware], prefix: "/login" })
+    app.register(patients_routes, { prefix: "/patients" })
+    app.register(anamnesis_routes, { prefix: "/anamnesis" })
 }
 
-export { app_routes }
+export { app_routes }   
