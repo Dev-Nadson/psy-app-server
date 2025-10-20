@@ -1,12 +1,10 @@
+import type { IProfile } from "./professionals.types.js"
 interface ISessionInput {
     email: string,
     password: string
 }
 
-interface IsessionOutput {
-    id: string,
-    name: string,
-    email: string
+interface IsessionOutput extends IProfile {
 }
 
 export type { ISessionInput, IsessionOutput }

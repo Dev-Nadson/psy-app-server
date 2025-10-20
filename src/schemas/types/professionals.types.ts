@@ -5,10 +5,16 @@ interface ICreateProfessionalInput {
 }
 
 interface ICreateProfessionalOutput {
-    id: string;
-    name: string;
-    email: string;
-    created_at: Date;
+    id: string
+    name: string
+    email: string
+    created_at: Date
 }
 
-export type { ICreateProfessionalInput, ICreateProfessionalOutput }
+interface IProfile {
+    sub: string
+    email: string
+    name: string
+}
+
+export type { ICreateProfessionalInput, ICreateProfessionalOutput, IProfile }

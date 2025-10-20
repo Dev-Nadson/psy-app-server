@@ -17,7 +17,7 @@ async function create_session_repository({ email, password }: ISessionInput): Pr
     }
 
     return {
-        id: user.id,
+        sub: user.id,
         name: user.name,
         email: user.email
     }
