@@ -1,7 +1,6 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
 import { session_schema } from "../../schemas/sessions.schema.js";
 import { create_session_repository } from "../../repositories/sessions/create-sessions.repo.js";
-import { professional_schema } from "../../schemas/professionals.schema.js";
 
 async function create_sessions_controller(req: FastifyRequest, reply: FastifyReply) {
     const { email, password } = session_schema.parse(req.body)
