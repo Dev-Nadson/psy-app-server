@@ -5,7 +5,9 @@ const env_schema = z.object({
     PORT: z.coerce.number().positive().default(3333),
     HOST: z.string().min(1).default('0.0.0.0'),
     DATABASE_URL: z.url().min(1),
-    BCRYPT_ROUNDS: z.coerce.number().min(10).max(15).default(10)
+    BCRYPT_ROUNDS: z.coerce.number().min(10).max(15).default(10),
+    JWT_SECRET: z.string(),
+    JWT_EXPIRES_IN: z.string().default("1d")
 })
 
 const env = env_schema.parse(process.env)

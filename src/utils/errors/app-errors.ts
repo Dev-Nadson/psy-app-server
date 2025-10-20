@@ -17,11 +17,21 @@ class ConflictError extends AppError {
         super(message, 409)
     }
 }
+class UnauthorizedError extends AppError {
+    constructor(message: string = "Não autorizado") {
+        super(message, 401);
+    }
+}
+
+class NotFoundError extends AppError {
+    constructor(message: string) {
+        super(message, 404)
+    }
+}
 
 class InternalServerError extends AppError {
     constructor(message: string) {
         super(message, 500)
     }
 }
-
-export { AppError, ConflictError, InternalServerError }
+export { AppError, ConflictError, NotFoundError, UnauthorizedError, InternalServerError }
